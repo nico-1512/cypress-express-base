@@ -1,0 +1,8 @@
+# Node modules
+/node_modules
+
+# Api tester
+/server
+
+# VS Code
+/.vscode
