@@ -5,7 +5,7 @@ describe('template spec', () => {
 
 
   it('login', () => {
-    cy.request('POST','users', {username: 'pippo', password: 'pippo'})
+    cy.request('POST','users', {username: 'pippo', password: 'pippo', repeatePassword: 'pippo'})
       .should((res) => {
         expect(res.status).to.eq(201)
       })

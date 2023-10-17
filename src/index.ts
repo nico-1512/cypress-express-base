@@ -1,4 +1,5 @@
 const express = require('express');
+const md5 = require('md5');
 
 const app = express()
 const port = 4000
@@ -13,10 +14,7 @@ app.use('/users', usersRoute);
 
 
 app.get('/', (req, res) => {
-
-  // await .then(() => console.log('Connected!'));
-  res.send("Hello World!")
-  
+  res.send("Hello Worldoooooooooo!")
 })
 
 
@@ -24,3 +22,5 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
+
+export {};
