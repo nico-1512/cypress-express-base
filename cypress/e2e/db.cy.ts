@@ -13,7 +13,7 @@ describe('db testing', () => {
     )
   })
 
-  // clean up db
+  // // clean up db
   after('After all', () => {
     cy.findOne({username: 'admin'}).then((res: any) => {
       expect(res).to.haveOwnProperty('_id')
@@ -25,30 +25,28 @@ describe('db testing', () => {
   // ---- TESTS ----
 
 
-  // it('insert', () => {
-  //   cy.findOne(obj).then((res) => {
-  //     expect(res).to.eq(null)
-  //     cy.insertOne(obj, {collection, database: 'users'}).then((res: string) => {
-  //       expect(res).not.to.be.empty;
-  //     })
-  //   })
-  // })
-
   it('signin', () => {
     cy.request('POST','users', ({
       ...obj,
-      repeatePassword: 'admin',
-      type: 'signin'
+      repeatePassword: 'admin'
     }))
-      .should((response) => {
-        expect(response.status).to.eq(201);
-      })
+    .should((response) => {
+      expect(response.status).to.eq(201);
+    })
+
+    cy.findOne({username: obj.username}).then((res) => {
+      expect(res).to.haveOwnProperty('username').to.eq(obj.username);
+    })
   })
 
   it('login', () => {
-    cy.request('POST','users', ({...obj}))
+    cy.request('POST','users', (obj))
     .should((response) => {
       expect(response.status).to.eq(201);
+    })
+
+    cy.findOne({username: obj.username}).then((res) => {
+      expect(res).to.haveOwnProperty('username').to.eq(obj.username);
     })
   })
 
