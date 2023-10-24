@@ -2,6 +2,8 @@ name: End-to-end tests
 on: [push, ]
 jobs:
   docker:
+    concurrency:
+      group: ${{ github.workflow }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -11,6 +13,8 @@ jobs:
         run: docker-compose -f "docker/docker-compose.yml" up -d --build
 
   cypress-run:
+    concurrency:
+      group: ${{ github.workflow }}
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
