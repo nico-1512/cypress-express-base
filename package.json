@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "cy": "npx cypress open"
+    "cy": "npx cypress open",
+    "test": "cypress run --e2e"
   },
   "author": "",
   "license": "ISC",
