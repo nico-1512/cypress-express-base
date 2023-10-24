@@ -5,7 +5,7 @@ describe('s3 testing', () => {
 
   it('insert into bucket', () => {
     cy.request('POST', '/s3', {filePath: '/home/nico/Desktop/blank.pdf'}).then(
-      (response: any) => {
+      (response) => {
         expect(response.body).to.haveOwnProperty('ETag')
         cy.wrap(response.body.ETag).then(tag => ETag = tag)
       }
@@ -14,7 +14,7 @@ describe('s3 testing', () => {
 
   it('getting inserted file', () => {
       cy.request('GET', '/s3/blank.pdf')
-      .should((response: any) => {
+      .should((response) => {
         expect(response.body).to.haveOwnProperty('LastModified')
         expect(ETag).to.eq(response.body.ETag);
       });

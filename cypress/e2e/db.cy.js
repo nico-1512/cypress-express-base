@@ -15,7 +15,7 @@ describe('db testing', () => {
 
   // // clean up db
   after('After all', () => {
-    cy.findOne({username: 'admin'}).then((res: any) => {
+    cy.findOne({username: 'admin'}).then((res) => {
       expect(res).to.haveOwnProperty('_id')
       cy.deleteOne(obj);
     })
