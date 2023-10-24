@@ -16,6 +16,9 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}
     runs-on: ubuntu-22.04
+    container:
+      image: cypress/browsers:latest
+      options: --user 1001
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,3 +28,4 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: npm run start
+          auto-cancel-after-failures: 2
