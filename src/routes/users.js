@@ -105,5 +105,3 @@ router.post('/changePassword', (req, res) => {
 
 // Export module
 module.exports = router;
-
-export {};

@@ -1,5 +1,5 @@
-import * as AWS from 'aws-sdk';
-import * as express from 'express';
+const AWS = require('aws-sdk') ;
+const express = require('express');
 
 const space = new AWS.S3({
   region: 'eu-west-1',
@@ -22,7 +22,7 @@ router.get('', (req, res) => {
  * Insert into S3 bucket a new file
  * @param {string} filePath: the local path to the file
  */
-router.post('', async (req: any, res: any) => {
+router.post('', async (req, res) => {
   
   const file = req.body.filePath || '';
   
