@@ -3,13 +3,13 @@ version: '3.1'
 
 services:
 
-  node: 
-    depends_on:
-      - mongo
-      - minio
-    build: ../.
-    ports:
-      - "4000:4000"
+  # node: 
+  #   depends_on:
+  #     - mongo
+  #     - minio
+  #   build: ../.
+  #   ports:
+  #     - "4000:4000"
 
   mongo:
     image: mongo

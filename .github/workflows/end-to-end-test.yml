@@ -10,16 +10,17 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          
+
       - name: Start containers
         run: docker-compose -f "docker/docker-compose.yml" up -d --build      
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v6
-      #   with: 
-      #     wait-on: 'http://[::1]:4000'
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with: 
+          start: "npm run start"
+          wait-on: 'http://[::1]:4000'
 
-      - name: Execute the Tests
-        run: npm run test
+      # - name: Execute the Tests
+      #   run: npm run test
           
