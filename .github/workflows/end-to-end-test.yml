@@ -14,5 +14,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with: 
-          wait-on: 'http://127.0.0.1:4000'
+          wait-on: 'http://[::1]:4000'
           
