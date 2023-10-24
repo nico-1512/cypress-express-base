@@ -3,7 +3,7 @@ describe('s3 testing', () => {
 
   let ETag;
 
-  before(() => {
+  beforeEach(() => {
     cy.request('GET', '/s3').then(
       (response) => {
         expect(response.status).to.eq(200);
@@ -12,7 +12,7 @@ describe('s3 testing', () => {
   })
 
   it('insert into bucket', () => {
-    cy.request('POST', '/s3', {filePath: '/home/nico/Desktop/blank.pdf'}).then(
+    cy.request('POST', '/s3', {filePath: '/files/blank.pdf'}).then(
       (response) => {
         expect(response.body).to.haveOwnProperty('ETag')
         cy.wrap(response.body.ETag).then(tag => ETag = tag)
