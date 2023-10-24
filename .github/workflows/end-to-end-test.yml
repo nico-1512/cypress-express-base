@@ -1,20 +1,7 @@
 name: End-to-end tests
 on: [push, ]
 jobs:
-  docker:
-    concurrency:
-      group: ${{ github.workflow }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Start containers
-        run: docker-compose -f "docker/docker-compose.yml" up -d --build
-
   cypress-run:
-    concurrency:
-      group: ${{ github.workflow }}
     runs-on: ubuntu-22.04
     container:
       image: cypress/browsers:latest
@@ -22,7 +9,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Start containers
+        run: docker-compose -f "docker/docker-compose.yml" up -d --build      
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
+          
