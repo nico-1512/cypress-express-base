@@ -2,7 +2,7 @@
   "name": "cypress-express-test",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
+  "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js",
     "cy": "npx cypress open"
