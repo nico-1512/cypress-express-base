@@ -21,9 +21,6 @@ jobs:
       #   with: 
       #     wait-on: 'http://[::1]:4000'
 
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
-
       - name: Execute the Tests
-        run: yarn test
+        run: npm run test
           
