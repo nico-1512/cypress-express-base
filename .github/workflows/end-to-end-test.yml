@@ -28,4 +28,3 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: npm run start
-          auto-cancel-after-failures: 2
