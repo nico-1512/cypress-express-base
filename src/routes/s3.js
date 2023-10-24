@@ -3,13 +3,14 @@ const express = require('express');
 
 const space = new AWS.S3({
   region: 'eu-west-1',
-  endpoint: 'http://localhost:9000/test',
+  endpoint: 'http://127.0.0.1:9000/test',
   s3ForcePathStyle: true, 
   credentials: new AWS.Credentials(
-    "PYmH1fmWew4cXfqfMdT8",
-    "OrCrco3wP3o3T30VTPcwZdYVad8j1hi1A4E0Gmmr"
+    process.env.MINIO_ROOT_USER,
+    process.env.MINIO_ROOT_PASSWORD,
   ),
 });
+
 
 const router = express.Router();
 
@@ -23,17 +24,20 @@ router.get('', (req, res) => {
  * @param {string} filePath: the local path to the file
  */
 router.post('', async (req, res) => {
-  
+
   const file = req.body.filePath || '';
   
   const params = {
-    Bucket: "test",
+    Bucket: 'test',
     Key: file.substring(file.lastIndexOf('/')+1, file.length)
   };
 
+  console.log(typeof(params.Key));
+
   space.putObject(params, (err, data) => {
     if(err){
-      res.status(400);
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaa error', err);
+      res.status(403);
       return res.send()
     }else{
       console.log(data);
@@ -53,7 +57,7 @@ router.delete('/:id', (req, res) => {
     const file = req.params.id || '';
   
     const params = {
-      Bucket: "test",
+      Bucket: 'test',
       Key: file
     }
   

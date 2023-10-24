@@ -1,18 +1,17 @@
+const filePath = 'cypress/files/blank.pdf'
+
 
 describe('s3 testing', () => {
 
   let ETag;
+  let file;
 
-  it('test s3 route', () => {
-    cy.request('GET', '/s3').then(
-      (response) => {
-        expect(response.status).to.eq(200);
-      }
-    )
+  it('get file locally', () => {
+    cy.readFile(filePath)
   })
 
   it('insert into bucket', () => {
-    cy.request('POST', '/s3', {filePath: 'cypress/e2e/files/blank.pdf'}).then(
+    cy.request('POST', '/s3', {filePath}).then(
       (response) => {
         expect(response.body).to.haveOwnProperty('ETag')
         cy.wrap(response.body.ETag).then(tag => ETag = tag)

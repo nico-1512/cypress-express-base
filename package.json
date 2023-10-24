@@ -14,6 +14,7 @@
     "aws-sdk": "^2.1474.0",
     "cypress": "^13.3.1",
     "cypress-mongodb": "^6.2.0",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "md5": "^2.3.0",
     "mongodb": "^6.1.0",

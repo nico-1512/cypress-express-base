@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express()
 const port = 4000
+require('dotenv').config()
 
 // Setup
 app.use(express.json())
@@ -16,6 +17,7 @@ app.use('/s3', s3Route);
 app.get('/', (req, res) => {
   res.send("Hello Worldoooooooooo!")
 })
+
 
 
 app.listen(port, () => {

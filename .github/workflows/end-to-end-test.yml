@@ -1,15 +1,11 @@
 name: End-to-end tests
-on: [push, ]
+on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
 
       - name: Start containers
         run: docker-compose -f "docker/docker-compose.yml" up -d --build      
@@ -20,6 +16,7 @@ jobs:
         with: 
           start: "npm run start"
           wait-on: 'http://[::1]:4000'
+          browser: chrome
 
       # - name: Execute the Tests
       #   run: npm run test
