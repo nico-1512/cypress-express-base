@@ -1,16 +1,16 @@
 const express = require('express');
-const md5 = require('md5');
-
 const app = express()
 const port = 4000
 
 // Setup
 app.use(express.json())
 const usersRoute = require('./routes/users')
+const s3Route = require('./routes/s3')
 
 
 // APIs
 app.use('/users', usersRoute);
+app.use('/s3', s3Route);
 
 
 app.get('/', (req, res) => {

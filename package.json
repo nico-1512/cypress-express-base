@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1474.0",
     "cypress": "^13.3.1",
     "cypress-mongodb": "^6.2.0",
     "express": "^4.18.2",
