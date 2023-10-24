@@ -12,7 +12,7 @@ describe('s3 testing', () => {
   })
 
   it('insert into bucket', () => {
-    cy.request('POST', '/s3', {filePath: '/files/blank.pdf'}).then(
+    cy.request('POST', '/s3', {filePath: 'cypress/e2e/files/blank.pdf'}).then(
       (response) => {
         expect(response.body).to.haveOwnProperty('ETag')
         cy.wrap(response.body.ETag).then(tag => ETag = tag)
