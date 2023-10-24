@@ -3,7 +3,7 @@ describe('s3 testing', () => {
 
   let ETag;
 
-  beforeEach(() => {
+  it('test s3 route', () => {
     cy.request('GET', '/s3').then(
       (response) => {
         expect(response.status).to.eq(200);
