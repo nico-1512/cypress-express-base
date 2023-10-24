@@ -8,7 +8,6 @@
 /.vscode
 
 # JS files
-*.js
 
 # builded files
 /dist
