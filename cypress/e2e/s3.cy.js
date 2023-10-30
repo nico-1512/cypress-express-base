@@ -1,6 +1,5 @@
 const filePath = 'cypress/files/blank.pdf'
 
-
 describe('s3 testing', () => {
 
   let ETag;
