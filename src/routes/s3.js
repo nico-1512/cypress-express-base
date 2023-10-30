@@ -4,7 +4,7 @@ const express = require('express');
 const space = new AWS.S3({
   region: 'eu-west-1',
   endpoint: 'http://127.0.0.1:9000/test',
-  s3ForcePathStyle: true, 
+  s3ForcePathStyle: true,
   credentials: new AWS.Credentials(
     process.env.MINIO_ROOT_USER,
     process.env.MINIO_ROOT_PASSWORD,
