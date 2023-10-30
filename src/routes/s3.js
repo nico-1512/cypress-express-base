@@ -47,8 +47,6 @@ router.post('', async (req, res) => {
     Key: file.substring(file.lastIndexOf('/')+1, file.length)
   };
 
-  console.log(typeof(params.Key));
-
   space.putObject(params, (err, data) => {
     if(err){
       console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaa error', err);
