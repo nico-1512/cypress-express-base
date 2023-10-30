@@ -18,6 +18,7 @@ jobs:
 
 
   build-and-push:
+    needs: cypress-testing
     runs-on: ubuntu-22.04
     steps:
       - name: Set up QEMU
