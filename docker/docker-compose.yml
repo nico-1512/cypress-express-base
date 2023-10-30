@@ -16,6 +16,7 @@ services:
     image: bitnami/minio:2022.4.16
     ports:
       - "9000:9000"
+      # - "9001:9001"
     # volumes:
     #   - minio_storage:/data
     environment:
