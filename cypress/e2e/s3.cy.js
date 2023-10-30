@@ -16,7 +16,7 @@ describe('s3 testing', () => {
     cy.request('GET', '/s3/test', {}).then(
       (response) => {
         expect(response.status).to.eq(200);
-        cypress.console.log(response.body);
+        cy.log(response.body);
       }
     )
   })
