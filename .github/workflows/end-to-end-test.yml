@@ -1,7 +1,7 @@
 name: End-to-end tests
 on: [push]
 jobs:
-  cypress-run:
+  cypress-testing:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -17,6 +17,9 @@ jobs:
           browser: chrome
 
 
+  build-and-push:
+    runs-on: ubuntu-22.04
+    steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
