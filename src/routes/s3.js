@@ -22,7 +22,8 @@ router.get('', (req, res) => {
 router.get('/test', (req, res) => {
   space.listBuckets((err, data) => {
     if(err){
-      return;
+      res.status(400)
+      return res.send("Bucket NOT found!")
     }else{
       data.Buckets.forEach((bucket) => {
         if(bucket.Name === 'test'){
