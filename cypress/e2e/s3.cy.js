@@ -10,6 +10,14 @@ describe('s3 testing', () => {
     cy.readFile(filePath)
   })
 
+  it('getting bucket', () => {
+    cy.request('GET', '/s3/test', {}).then(
+      (response) => {
+        expect(response.status).to.eq(200);
+      }
+    )
+  })
+
   it('insert into bucket', () => {
     cy.request('POST', '/s3', {filePath}).then(
       (response) => {

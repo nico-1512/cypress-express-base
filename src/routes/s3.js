@@ -19,6 +19,21 @@ router.get('', (req, res) => {
   return res.send('MinIO API`s')
 })
 
+router.get('/test', (req, res) => {
+  space.listBuckets((err, data) => {
+    if(err){
+      return;
+    }else{
+      data.Buckets.forEach((bucket) => {
+        if(bucket.Name === 'test'){
+          res.status(200)
+          return res.send("Bucket found!")
+        }
+      })
+    }
+  })
+})
+
 /**
  * Insert into S3 bucket a new file
  * @param {string} filePath: the local path to the file
