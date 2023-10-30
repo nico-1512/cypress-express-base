@@ -3,7 +3,6 @@ version: '3.1'
 services:
 
   node:
-    container_name: node
     build: .
     image: nico-1512/cypress-tests
     restart: unless-stopped
@@ -13,7 +12,6 @@ services:
       - docker-tests
 
   mongo:
-    container_name: mongodb
     image: mongo
     restart: unless-stopped
     ports:
@@ -27,7 +25,6 @@ services:
       - docker-tests
 
   minio:
-    container_name: minio
     image: bitnami/minio:2022.4.16
     ports:
       - "9000:9000"

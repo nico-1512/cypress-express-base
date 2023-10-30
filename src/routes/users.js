@@ -6,7 +6,7 @@ const { from } = require('rxjs');
 const { omit } = require('radash')
 const { MongoClient } = require('mongodb');
 
-const url = 'mongodb://admin:admin@mongodb:27012' //`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@monodb:27017`;
+const url = 'mongodb://admin:admin@mongo:27017' //`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@monodb:27017`;
 const client = new MongoClient(url);
 const dbName = 'users';
 
