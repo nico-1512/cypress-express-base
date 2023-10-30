@@ -1,0 +1,45 @@
+version: '3.1'
+
+services:
+
+  node:
+    container_name: node
+    build: .
+    image: nico-1512/cypress-tests
+    restart: unless-stopped
+    ports: 
+      - 4000:4000
+    networks:
+      - docker-tests
+
+  mongo:
+    container_name: mongodb
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+    networks:
+      - docker-tests
+
+  minio:
+    container_name: minio
+    image: bitnami/minio:2022.4.16
+    ports:
+      - "9000:9000"
+    expose:
+      - "9000"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_DEFAULT_BUCKETS: ${MINIO_BUCKET}
+    networks:
+      - docker-tests
+
+networks:
+  docker-tests:
+    driver: bridge

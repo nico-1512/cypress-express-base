@@ -1,10 +1,19 @@
-FROM node:lts-alpine
-ENV NODE_ENV=production
+FROM node:18
+
+RUN mkdir -p /usr/src/app
+
+# Create app directory
 WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
-COPY . .
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json .
+RUN npm i
+
+# Copy app boundle
+COPY src/ src/
+COPY .env .
+
 EXPOSE 4000
-RUN chown -R node /usr/src/app
-USER node
-CMD ["npm", "start"]
+CMD [ "npm", "run", "start" ]

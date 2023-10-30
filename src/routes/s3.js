@@ -13,7 +13,7 @@ const space = new AWS.S3({
 
 const router = express.Router();
 
-router.get('', (req, res) => {
+router.get('/', (req, res) => {
   res.status(200);
   return res.send('MinIO API`s')
 })
