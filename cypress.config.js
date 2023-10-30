@@ -11,7 +11,7 @@ module.exports = defineConfig({
   },
 
   e2e: {
-    baseUrl: 'http://127.0.0.1:4000',
+    baseUrl: 'http://localhost:4000',
     setupNodeEvents(on, config) {
       configurePlugin(on);
       // implement node event listeners here
