@@ -1,5 +1,3 @@
-const cypress = require("cypress");
-
 const filePath = 'cypress/files/blank.pdf'
 
 
