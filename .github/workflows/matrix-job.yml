@@ -20,7 +20,6 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build and export
-        id: build_export
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -39,12 +38,6 @@ jobs:
           wait-on: 'http://[::1]:4000'
           browser: chrome
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: nico1512_dockerimage
-          path: /tmp/nico1512.app.tar
-        if: steps.cypress-run.conclusion == 'success'
 
   build-and-push:
     needs: cypress-testing
