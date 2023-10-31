@@ -4,8 +4,8 @@ services:
 
   node:
     container_name: node
-    build: .
-    image: nico-1512/cypress-tests
+    # build: .
+    image: nico-1512/cypress-tests@v1.0.0
     restart: unless-stopped
     ports: 
       - 4000:4000
