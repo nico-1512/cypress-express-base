@@ -2,7 +2,7 @@ name: Matrix test
 
 on: [push]
 
-jobs:
+jobs:  
   cypress-testing:
     strategy:
       matrix:
@@ -42,7 +42,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: nico1512/app
+          name: nico1512/app:v1.0.0
           path: /tmp/nico1512.app.tar
         if: steps.cypress-run.conclusion == 'success'
         
@@ -94,7 +94,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: nico1512/app
+          name:  nico1512/app:v1.0.0
 
       - name: Build and push
         uses: docker/build-push-action@v2
