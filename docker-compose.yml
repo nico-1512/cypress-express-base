@@ -5,7 +5,7 @@ services:
   node:
     container_name: node
     # build: .
-    image: ${ DOCKER_IMAGE }
+    image: ${DOCKER_IMAGE}
     restart: unless-stopped
     ports: 
       - 4000:4000
