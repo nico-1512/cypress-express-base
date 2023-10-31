@@ -5,7 +5,7 @@ services:
   node:
     container_name: node
     # build: .
-    image: ${DOCKER_IMAGE}
+    image: nico1512/app:v1.0.0
     restart: unless-stopped
     ports: 
       - 4000:4000

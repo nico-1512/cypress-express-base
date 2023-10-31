@@ -25,13 +25,12 @@ jobs:
         with:
           context: .
           tags: nico1512/app:v1.0.0
-          outputs: type=docker,dest=/tmp/nico1512.app.tar 
-
-      - name: Export image id
-        run: export DOCKER_IMAGE=${{steps.build_export.outputs.imageid}} 
+          outputs: type=docker,dest=/tmp/nico1512.app.tar
 
       - name: Start containers
-        run: docker-compose --env-file .env up -d
+        run: |
+            docker load --input /tmp/nico1512.app.tar
+            docker-compose --env-file .env up -d
 
       - name: Cypress run
         id: cypress-run
